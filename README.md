@@ -13,29 +13,30 @@ other custom neural architectures.
 ---
 
 ## Current Project Structure
-## QSim-AI/
-## │
-## ├── core/
-## │ ├── init.py
-## │ ├── qubit.py
-## │ ├── gates.py
-## │ ├── register.py
-## │ ├── circuit.py
-## │ └── quantum_layer.py
-## │
-## ├── tests/
-## │ ├── test_qubit.py
-## │ ├── test_gates.py
-## │ ├── test_register.py
-## │ ├── test_entanglement.py
-## │ ├── test_circuit.py
-## │ └── test_quantum_layer.py
-## │
-## ├── docs/
-## │ └── phase1_core.md
-## │
-## ├── README.md
-## └── .gitignore
+
+QSim-AI/
+│
+├── core/
+│ ├── init.py
+│ ├── qubit.py
+│ ├── gates.py
+│ ├── register.py
+│ ├── circuit.py
+│ └── quantum_layer.py
+│
+├── tests/
+│ ├── test_qubit.py
+│ ├── test_gates.py
+│ ├── test_register.py
+│ ├── test_entanglement.py
+│ ├── test_circuit.py
+│ └── test_quantum_layer.py
+│
+├── docs/
+│ └── phase1_core.md
+│
+├── README.md
+└── .gitignore
 
 
 ---
