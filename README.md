@@ -13,7 +13,6 @@ other custom neural architectures.
 ---
 
 ## Current Project Structure
-
 QSim-AI/
 │
 ├── core/
