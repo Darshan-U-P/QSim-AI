@@ -1,52 +1,93 @@
 import numpy as np
 from core.loss import mse
 
+
 class QuantumTrainer:
     def __init__(self, model, lr=0.1, eps=1e-4, output_transform=None):
         """
-        output_transform: function that maps quantum output -> class output
+        model            : QuantumLayer instance
+        lr               : learning rate
+        eps              : finite difference step
+        output_transform : function that maps quantum output -> class output
+                           (for example 4 quantum states -> 2 classes)
         """
         self.model = model
         self.lr = lr
         self.eps = eps
         self.output_transform = output_transform
 
-    def step(self, x, y_true):
-        # Forward
+    def _forward_loss(self, x, y_true):
+        """
+        Forward pass + loss calculation with optional output transform
+        """
         q_pred = self.model.forward(x)
-
-        # Convert quantum output to class output if needed
-        if self.output_transform is not None:
+        if self.output_transform:
             y_pred = self.output_transform(q_pred)
         else:
             y_pred = q_pred
+        return mse(y_pred, y_true)
 
-        base_loss = mse(y_pred, y_true)
+    def _compute_gradients(self, x, y_true):
+        """
+        Compute gradients for a single sample using finite difference
+        """
         grads = np.zeros_like(self.model.weights)
 
         for i in range(len(self.model.weights)):
             original = self.model.weights[i]
 
-            # theta + eps
+            # f(theta + eps)
             self.model.weights[i] = original + self.eps
-            q_plus = self.model.forward(x)
-            # Apply transform before calculating loss
-            y_plus = self.output_transform(q_plus) if self.output_transform else q_plus
-            loss_plus = mse(y_plus, y_true)
+            loss_plus = self._forward_loss(x, y_true)
 
-            # theta - eps
+            # f(theta - eps)
             self.model.weights[i] = original - self.eps
-            q_minus = self.model.forward(x)
-            # Apply transform before calculating loss
-            y_minus = self.output_transform(q_minus) if self.output_transform else q_minus
-            loss_minus = mse(y_minus, y_true)
+            loss_minus = self._forward_loss(x, y_true)
 
-            # Restore
+            # Restore original weight
             self.model.weights[i] = original
 
+            # Central difference
             grads[i] = (loss_plus - loss_minus) / (2 * self.eps)
 
-        # Update
-        self.model.weights -= self.lr * grads
+        return grads
 
+    def step(self, x, y_true):
+        """
+        Single-sample training step (already working before)
+        """
+        base_loss = self._forward_loss(x, y_true)
+        grads = self._compute_gradients(x, y_true)
+
+        # Gradient descent update
+        self.model.weights -= self.lr * grads
         return base_loss
+
+    def train_batch(self, dataset):
+        """
+        Batch training:
+        dataset = [(x1, y1), (x2, y2), ...]
+
+        We:
+        - Compute gradients for each sample
+        - Average them
+        - Update weights once per batch
+        """
+        total_grads = np.zeros_like(self.model.weights)
+        total_loss = 0.0
+
+        for x, y_true in dataset:
+            loss = self._forward_loss(x, y_true)
+            grads = self._compute_gradients(x, y_true)
+
+            total_grads += grads
+            total_loss += loss
+
+        # Average gradients and loss
+        total_grads /= len(dataset)
+        total_loss /= len(dataset)
+
+        # Update once per batch
+        self.model.weights -= self.lr * total_grads
+
+        return total_loss
