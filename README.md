@@ -1,53 +1,82 @@
 # QSim-AI
 
-QSim-AI is a quantum computing simulator written completely from scratch in Python.
-It runs on classical computers and is designed for AI/ML/DL research and hybrid
-quantum–neural architectures.
+QSim-AI is a quantum computing simulator written completely from scratch in Python.  
+It runs on classical PCs/laptops and is designed specifically for AI/ML/DL research and
+hybrid Quantum–Neural architectures.
 
-This project does NOT use PennyLane, Qiskit, Cirq, or any external quantum framework.
+This project does **not** use PennyLane, Qiskit, Cirq, or any external quantum framework.
+Everything is implemented manually for full control, transparency, and research freedom.
 
-The goal is to build:
-- A minimal and transparent quantum simulator
-- Fully controllable quantum primitives
-- A future Quantum Layer for PB-ANN and AI systems
+The long-term goal is to build a **Quantum–AI engine** that can integrate with PB-ANN and
+other custom neural architectures.
 
 ---
 
-## Implemented Features (Phase 1)
+## Current Project Structure
 
+QSim-AI/
+│
+├── core/
+│ ├── init.py
+│ ├── qubit.py
+│ ├── gates.py
+│ ├── register.py
+│ ├── circuit.py
+│ └── quantum_layer.py
+│
+├── tests/
+│ ├── test_qubit.py
+│ ├── test_gates.py
+│ ├── test_register.py
+│ ├── test_entanglement.py
+│ ├── test_circuit.py
+│ └── test_quantum_layer.py
+│
+├── docs/
+│ └── phase1_core.md
+│
+├── README.md
+└── .gitignore
+
+
+---
+
+## Implemented Features
+
+### Phase 1 – Quantum Core  
 ✔ Qubit representation  
+✔ Probability normalization  
+✔ Measurement collapse  
 ✔ Single-qubit gates (X, Z, H)  
-✔ Multi-qubit registers  
+✔ Parameterized rotation gates (RX, RY, RZ)  
+✔ Multi-qubit register  
 ✔ Single-qubit gates on registers  
 ✔ CNOT gate  
 ✔ Quantum entanglement  
-✔ Measurement collapse  
+✔ Bell state generation  
 
-This means the core of a real quantum computer is already implemented.
+### Phase 2 – Quantum Programming Interface  
+✔ QuantumCircuit abstraction  
+✔ Clean gate-based programming style  
 
----
+### Phase 3 – Quantum Neural Layer  
+✔ Parameterized circuits  
+✔ QuantumLayer abstraction  
+✔ Classical → Quantum data encoding  
+✔ Quantum probability output  
 
-## Mathematical Foundation
-
-A quantum state is represented as:
-
-|ψ⟩ = [α₀, α₁, α₂, ..., αₙ]
-
-Where:
-- n = 2^number_of_qubits
-- ∑ |αᵢ|² = 1
-
-Quantum gates are unitary matrices applied as:
-
-|ψ'⟩ = U |ψ⟩
-
-Measurement collapses the state probabilistically.
+At this stage, QSim-AI is already capable of behaving like a **Quantum Neural Network layer**.
 
 ---
 
-## Example: Creating Entanglement
+## Example: Entanglement
 
 ```python
-qr = QubitRegister(2)
-qr.apply_single_gate(H, 0)
-qr.apply_cnot(0, 1)
+from core.circuit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+qc.h(0)
+qc.cnot(0, 1)
+
+print(qc.state())
+print(qc.probabilities())
