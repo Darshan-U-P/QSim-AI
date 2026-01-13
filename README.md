@@ -13,7 +13,7 @@ other custom neural architectures.
 ---
 
 ## Current Project Structure
-QSim-AI/
+## QSim-AI/
 │
 ├── core/
 │ ├── init.py
