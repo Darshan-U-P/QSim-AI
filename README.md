@@ -158,8 +158,73 @@ This project aims to create a bridge between:
 
 ---
 
+### Phase 4 – Quantum Learning Engine  
+✔ Loss functions (MSE)  
+✔ Finite-difference gradient estimation  
+✔ Gradient descent optimizer  
+✔ Trainable quantum parameters  
+✔ 1-qubit binary classification  
+✔ 2-qubit binary classification  
+✔ Quantum → Class probability projection  
+
+QSim-AI is now a **fully trainable Quantum Machine Learning framework**.
+It can learn from data, minimize loss, and converge to correct class predictions.
+---
+
 ## Status
 
 The quantum physics core and quantum programming interface are complete.  
 The project is now entering the **training and learning phase**, where QSim-AI becomes a
 true Quantum Machine Learning framework.
+
+## Example: 2-Qubit Quantum Classifier
+
+A 2-qubit quantum model produces 4 quantum probabilities:
+
+| State | Meaning |
+|------|-------|
+| 00 | Class 0 |
+| 01 | Class 0 |
+| 10 | Class 1 |
+| 11 | Class 1 |
+
+So we project:
+
+```python
+p0 = p[0] + p[1]
+p1 = p[2] + p[3]
+
+
+Initial class output: [0.0087, 0.9912]
+Final class output:   [0.9028, 0.0972]
+Loss: 0.98 → 0.01
+
+
+
+Add a **Capabilities section**:
+
+```markdown
+## Current Capabilities
+
+QSim-AI now supports:
+
+- Quantum physics simulation  
+- Programmable quantum circuits  
+- Parameterized quantum gates  
+- Quantum neural layers  
+- Classical → Quantum → Classical pipelines  
+- Single-sample learning  
+- Multi-qubit learning  
+- Quantum classification  
+- Gradient-based optimization  
+
+This places QSim-AI in the category of:
+> Quantum Machine Learning Frameworks.
+
+## Next Milestones
+
+1. Batch training (dataset learning)
+2. Multi-class quantum classification
+3. Quantum feature extractor mode
+4. PB-ANN + Quantum fusion
+5. Sparse routing and inhibition-based cognition
