@@ -1,4 +1,5 @@
-from circuit import QuantumCircuit
+from core.circuit import QuantumCircuit
+
 
 # Create a 2-qubit quantum circuit
 qc = QuantumCircuit(2)
