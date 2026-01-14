@@ -22,6 +22,7 @@ class HybridBatchCoTrainer:
     def compute_batch_loss(self, batch, criterion):
         total = 0
         for x, y in batch:
+            x = torch.tensor(x, dtype=torch.float32)
             logits = self.model(x)
             loss = criterion(logits.unsqueeze(0), torch.tensor([y]))
             total += loss
@@ -53,9 +54,21 @@ class HybridBatchCoTrainer:
             loss_minus = self.compute_batch_loss(batch, criterion).item()
 
             q_weights[i] = original
-
             grads[i] = (loss_plus - loss_minus) / (2 * self.eps)
 
         q_weights -= self.q_lr * grads
 
         return base_loss
+
+    # ===============================
+    # Embedding extraction interface
+    # ===============================
+    def embed(self, x):
+        """
+        Returns the PB-ANN cognitive embedding for an input.
+        Shape: (PB_DIM,)
+        """
+        with torch.no_grad():
+            x = torch.tensor(x, dtype=torch.float32)
+            pb_out, _ = self.model.hybrid(x)
+            return pb_out
