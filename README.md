@@ -1,7 +1,6 @@
 # QSim-AI
 
-QSim-AI is a **Quantum Machine Learning and Cognitive Architecture framework** written completely from scratch in Python.  
-It runs on classical PCs/laptops and is designed specifically for AI/ML/DL research and hybrid **Quantum–Neural intelligence systems**.
+QSim-AI is a **Quantum–Neural Cognitive Architecture** built from scratch in Python, designed to explore how physical quantum perception and biological-style neural cognition can co-evolve into intelligent systems.
 
 This project does **not** use PennyLane, Qiskit, Cirq, or any external quantum framework.  
 Everything is implemented manually for full control, transparency, and research freedom.
