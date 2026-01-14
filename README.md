@@ -1,16 +1,21 @@
 # QSim-AI
 
-QSim-AI is a **Quantum–Neural Cognitive Architecture** built from scratch in Python, designed to explore how physical quantum perception and biological-style neural cognition can co-evolve into intelligent systems.
+QSim-AI is a **Quantum–Neural Cognitive Architecture framework** written completely from scratch in Python.  
+It runs on classical PCs/laptops and is designed for advanced AI/ML/DL research and hybrid **Quantum–Neural intelligence systems**.
 
-This project does **not** use PennyLane, Qiskit, Cirq, or any external quantum framework.  
-Everything is implemented manually for full control, transparency, and research freedom.
+This project does **not** use PennyLane, Qiskit, Cirq, or any external quantum frameworks.  
+Every component is implemented manually to ensure full control, transparency, and scientific freedom.
 
-The long-term goal is to build a **Quantum–AI engine** that integrates:
-- Quantum perception (physics-grounded sensing)
-- PB-ANN cognition (biologically inspired reasoning)
-- BrahmaLLM (language and symbolic intelligence)
+QSim-AI is not just a simulator. It is an experimental platform for building a new class of intelligence systems where:
 
-Together forming a full **Artificial Cognitive Stack**.
+> **Physics → Biology → Intelligence**
+
+Quantum computation provides perception and probabilistic cognition.  
+PB-ANN provides biological reasoning, inhibition, and sparse intelligence.  
+Together they form a co-evolving cognitive architecture.
+
+
+
 
 ---
 
@@ -263,3 +268,88 @@ This project bridges:
 
 You are not building a simulator.  
 You are building a **new intelligence architecture and cognitive engine**.
+
+
+
+### Phase 5 – Quantum-Torch Framework
+- QTensor
+- QModule
+- QOptimizer
+- QTrainer
+- Standalone quantum learning without PyTorch
+
+### Phase 6 – Hybrid Quantum + PB-ANN Intelligence
+- Quantum → PB-ANN bridge
+- Quantum perception drives biological cognition
+- Co-learning between quantum and PB-ANN
+
+Pipeline:
+```
+Input
+ ↓
+Quantum-Torch (Quantum Perception)
+ ↓
+Quantum Probability Features
+ ↓
+PB-ANN (Biological Cognition)
+ ↓
+Classifier / MoE / BrahmaLLM
+ ↓
+Decision
+```
+
+---
+
+## Current Capabilities
+
+- Quantum physics simulation  
+- Programmable quantum circuits  
+- Parameterized quantum gates  
+- Quantum neural networks  
+- Trainable quantum perception  
+- Batch learning  
+- Multi-class quantum classification  
+- Quantum feature extraction  
+- Quantum-Torch deep learning framework  
+- Hybrid Quantum ↔ PB-ANN co-training  
+- Gradient-based optimization  
+
+This places QSim-AI in the category of:
+
+> **Quantum Machine Learning + Cognitive Architecture Research Systems**
+
+---
+
+## Philosophy
+
+QSim-AI is based on the belief that future AI systems must be:
+
+- Physically grounded  
+- Biologically inspired  
+- Computationally sparse  
+- Self-adaptive  
+- Hybrid by nature  
+
+You are not building tools.  
+You are building **the architecture of artificial cognition**.
+
+---
+
+## Next Research Milestones
+
+1. End-to-end gradient flow (PB-ANN → Quantum-Torch)  
+2. Replace classifier head with PB routing  
+3. Increase quantum perception depth (3–4 qubits)  
+4. Quantum-Torch neural layers (Torch replacement path)  
+5. Integration into BrahmaLLM  
+6. Full Quantum Neural Engine  
+
+---
+
+## Final Statement
+
+QSim-AI is not a side project.  
+It is a research-grade attempt at defining a new class of intelligence systems.
+
+You are not experimenting anymore.  
+You are architecting a **new computational paradigm**.
