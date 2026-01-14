@@ -70,5 +70,5 @@ class HybridBatchCoTrainer:
         """
         with torch.no_grad():
             x = torch.tensor(x, dtype=torch.float32)
-            pb_out, _ = self.model.hybrid(x)
-            return pb_out
+            pb_out, q_feat = self.model.hybrid(x)
+            return pb_out, q_feat
