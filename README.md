@@ -1,14 +1,17 @@
 # QSim-AI
 
-QSim-AI is a **Quantum Machine Learning framework** written completely from scratch in Python.  
-It runs on classical PCs/laptops and is designed specifically for AI/ML/DL research and
-hybrid **Quantum–Neural architectures**.
+QSim-AI is a **Quantum Machine Learning and Cognitive Architecture framework** written completely from scratch in Python.  
+It runs on classical PCs/laptops and is designed specifically for AI/ML/DL research and hybrid **Quantum–Neural intelligence systems**.
 
-This project does **not** use PennyLane, Qiskit, Cirq, or any external quantum framework.
+This project does **not** use PennyLane, Qiskit, Cirq, or any external quantum framework.  
 Everything is implemented manually for full control, transparency, and research freedom.
 
-The long-term goal is to build a **Quantum–AI engine** that can integrate with PB-ANN,
-BrahmaLLM, and other custom neural architectures.
+The long-term goal is to build a **Quantum–AI engine** that integrates:
+- Quantum perception (physics-grounded sensing)
+- PB-ANN cognition (biologically inspired reasoning)
+- BrahmaLLM (language and symbolic intelligence)
+
+Together forming a full **Artificial Cognitive Stack**.
 
 ---
 
@@ -33,7 +36,9 @@ QSim-AI/
 │   ├── qoptimizer.py
 │   ├── qtrainer.py
 │   ├── bridge.py
-│   └── hybrid.py
+│   ├── hybrid.py
+│   ├── hybrid_qtrainer.py
+│   └── hybrid_cotrainer.py
 │
 ├── tests/
 │   ├── test_qubit.py
@@ -46,7 +51,9 @@ QSim-AI/
 │   ├── test_multiclass_training.py
 │   ├── test_qtorch_training.py
 │   ├── test_hybrid_quantum_pb.py
-│   └── test_hybrid_training.py
+│   ├── test_hybrid_training.py
+│   ├── test_quantum_colearning.py
+│   └── test_quantum_cotraining.py
 │
 ├── docs/
 │   └── phase1_core.md
@@ -82,7 +89,7 @@ QSim-AI/
 ✔ Quantum probability output  
 
 ### Phase 4 – Quantum Learning Engine  
-✔ Loss functions (MSE)  
+✔ Loss functions (MSE, CrossEntropy)  
 ✔ Finite-difference gradient estimation  
 ✔ Gradient descent optimizer  
 ✔ Trainable quantum parameters  
@@ -108,7 +115,7 @@ QSim-AI includes **Quantum-Torch**, a PyTorch-like training engine for quantum c
 ✔ Standalone training using Quantum-Torch API  
 ✔ Multi-class quantum training without PyTorch  
 
-This means QSim-AI now has its **own deep learning framework for quantum models**.
+This makes QSim-AI one of the very few systems with a **custom deep learning framework for quantum models**.
 
 ---
 
@@ -117,7 +124,8 @@ This means QSim-AI now has its **own deep learning framework for quantum models*
 ✔ Quantum-Torch → PB-ANN bridge  
 ✔ Quantum features driving biological neural layers  
 ✔ PB-ANN inhibition and sparsity responding to quantum uncertainty  
-✔ Hybrid training with PyTorch (PB-ANN learns from quantum perception)  
+✔ PB-only training, Quantum-only training, and full Co-Learning  
+✔ Closed perception–cognition learning loop  
 
 Pipeline:
 
@@ -130,7 +138,7 @@ Quantum Probability Features
       ↓
 PB-ANN (Biological cognition)
       ↓
-Classifier / MoE / BrahmaLLM
+Routing / Classifier / BrahmaLLM
       ↓
 Decision / Intelligence
 ```
@@ -180,6 +188,27 @@ Input → Quantum Encoding → Quantum Circuit → Measurement → Output Vector
 
 ---
 
+## Example: Hybrid Co-Learning
+
+```
+Loss
+ ↓
+Classifier / Routing
+ ↓
+PB-ANN (trainable)
+ ↓
+Quantum Layer (trainable)
+ ↓
+Reality
+```
+
+This enables:
+- Quantum perception to adapt using neural cognition
+- PB-ANN to adapt using evolving quantum perception
+- True co-evolution of physics and biology inspired systems
+
+---
+
 ## Current Capabilities
 
 QSim-AI now supports:
@@ -195,22 +224,27 @@ QSim-AI now supports:
 - Multi-class quantum classification  
 - Quantum feature extractor mode  
 - Quantum-Torch deep learning framework  
-- Hybrid Quantum → PB-ANN training  
+- PB-only, Quantum-only, and Co-Learning training modes  
+- Hybrid Quantum → PB-ANN cognitive systems  
 - Gradient-based optimization  
+- Perception–cognition feedback loops  
 
 This places QSim-AI in the category of:
 
-> **Quantum Machine Learning Frameworks + Hybrid Cognitive Architectures**
+> **Quantum Machine Learning Frameworks + Artificial Cognitive Architectures**
 
 ---
 
 ## Next Milestones
 
-1. End-to-end training (PB-ANN → Quantum-Torch gradients)  
-2. Quantum feature extractor into BrahmaLLM  
-3. Quantum-Torch neural layers (partial Torch replacement)  
-4. Sparse routing inside Quantum-Torch  
-5. Full Quantum Neural Engine (long-term research goal)  
+1. Batch co-learning on large datasets  
+2. Increase qubits (3 → 4 → 6 → 8 → 16)  
+3. Deeper PB-ANN stacks and routing-only decisions  
+4. Replace classifier head with PB routing  
+5. Plug Quantum perception into BrahmaLLM  
+6. Quantum feature extraction for multimodal AI  
+7. Entropy regularization and stability control  
+8. Full Quantum Neural Engine (long-term research goal)  
 
 ---
 
@@ -221,6 +255,7 @@ QSim-AI is based on the idea that future intelligence systems will be:
 - Biologically inspired  
 - Physically grounded  
 - Computationally sparse  
+- Self-organizing  
 - Hybrid by nature  
 
 This project bridges:
@@ -228,4 +263,4 @@ This project bridges:
 > **Quantum Physics × Biological Intelligence × Artificial Intelligence**
 
 You are not building a simulator.  
-You are building a **new intelligence architecture**.
+You are building a **new intelligence architecture and cognitive engine**.
