@@ -12,8 +12,8 @@ def pad_input(x, n_qubits):
 
 
 # ===== CONFIG =====
-NUM_QUBITS = 3          # ⬅️ Scaled from 2 → 3 (Perception resolution increased)
-PB_DIM = 32
+NUM_QUBITS = 5          # ⬅️ Scaled from 2 → 3 (Perception resolution increased)
+PB_DIM = 4096
 NUM_CLASSES = 2
 
 # ===== MODEL =====
@@ -30,7 +30,7 @@ trainer = HybridBatchCoTrainer(
     model,
     eps=5e-4,        # Quantum gradient resolution
     q_lr=0.6,        # Quantum learning rate
-    pb_lr=1e-3       # PB learning rate
+    pb_lr=3e-4       # PB learning rate
 )
 
 # ===== DATASET =====
