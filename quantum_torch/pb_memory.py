@@ -1,11 +1,10 @@
-import numpy as np
 import torch
-import torch.nn.functional as F
+import numpy as np
+
 
 class PBMemory:
     """
-    Simple associative vector memory.
-    Stores PB embeddings and their labels / concepts.
+    Simple associative memory storing PB embeddings and their text labels.
     """
 
     def __init__(self):
@@ -13,32 +12,37 @@ class PBMemory:
         self.labels = []
 
     def store(self, vec, label):
-        self.vectors.append(vec.detach().cpu())
+        # vec must be [PB_DIM]
+        vec = vec.detach().cpu().view(-1)
+        self.vectors.append(vec)
         self.labels.append(label)
 
     def search(self, vec, k=3):
+        labels, scores, _ = self.search_with_vectors(vec, k)
+        return labels, scores
+
+    def search_with_vectors(self, vec, k=3):
         """
-        Returns k most similar stored memories using cosine similarity.
+        Returns:
+        - labels: recalled text labels
+        - scores: similarity scores
+        - recalled_pbs: actual PB vectors that were recalled
         """
         if len(self.vectors) == 0:
-            return [], []
+            return [], [], []
 
-        # Ensure 1D tensor
-        if vec.dim() > 1:
-            vec = vec.squeeze()
+        vec = vec.detach().cpu().view(-1)
 
-        vec = vec.detach().cpu()
         sims = []
-
         for v in self.vectors:
-            # Force both to shape [1, PB_DIM]
-            sim = F.cosine_similarity(
-                vec.unsqueeze(0),
-                v.unsqueeze(0),
-                dim=1
-            )
-            sims.append(sim.item())  # Now this is a scalar
+            v = v.view(-1)
+            sim = torch.dot(vec, v) / (torch.norm(vec) * torch.norm(v) + 1e-8)
+            sims.append(sim.item())
 
         topk = np.argsort(sims)[-k:][::-1]
 
-        return [self.labels[i] for i in topk], [sims[i] for i in topk]
+        recalled_labels = [self.labels[i] for i in topk]
+        recalled_scores = [sims[i] for i in topk]
+        recalled_vectors = [self.vectors[i] for i in topk]
+
+        return recalled_labels, recalled_scores, recalled_vectors
