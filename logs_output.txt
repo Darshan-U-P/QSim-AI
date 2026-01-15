@@ -1,62 +1,26 @@
-(qbits_ep) PS D:\all project\qunatam computer> python -m tests.test_cognitive_memory
-Training model...
-Epoch 0 | Loss: 0.6770
-Epoch 1 | Loss: 0.6697
-Epoch 2 | Loss: 0.6627
-Epoch 3 | Loss: 0.6533
-Epoch 4 | Loss: 0.6461
-Epoch 5 | Loss: 0.6394
-Epoch 6 | Loss: 0.6324
-Epoch 7 | Loss: 0.6253
-Epoch 8 | Loss: 0.6183
-Epoch 9 | Loss: 0.6111
-Epoch 10 | Loss: 0.6035
-Epoch 11 | Loss: 0.5946
-Epoch 12 | Loss: 0.5869
-Epoch 13 | Loss: 0.5790
-Epoch 14 | Loss: 0.5713
-Epoch 15 | Loss: 0.5632
-Epoch 16 | Loss: 0.5553
-Epoch 17 | Loss: 0.5472
-Epoch 18 | Loss: 0.5390
-Epoch 19 | Loss: 0.5294
-Epoch 20 | Loss: 0.5209
-Epoch 21 | Loss: 0.5123
-Epoch 22 | Loss: 0.5036
-Epoch 23 | Loss: 0.4948
-Epoch 24 | Loss: 0.4857
-Epoch 25 | Loss: 0.4765
-Epoch 26 | Loss: 0.4671
-Epoch 27 | Loss: 0.4576
-Epoch 28 | Loss: 0.4481
-Epoch 29 | Loss: 0.4384
-Epoch 30 | Loss: 0.4288
-Epoch 31 | Loss: 0.4190
-Epoch 32 | Loss: 0.4095
-Epoch 33 | Loss: 0.3998
-Epoch 34 | Loss: 0.3901
-Epoch 35 | Loss: 0.3803
-Epoch 36 | Loss: 0.3702
-Epoch 37 | Loss: 0.3601
-Epoch 38 | Loss: 0.3500
-Epoch 39 | Loss: 0.3399
-
-Storing experiences in memory:
-Stored: [0.1 0.1 0.  0.  0. ] → class_0
-Stored: [0.2 0.2 0.  0.  0. ] → class_0
-Stored: [2.5 2.5 0.  0.  0. ] → class_1
-Stored: [2.2 2.4 0.  0.  0. ] → class_1
-
-Querying memory:
-Input: [0.15 0.15 0.   0.   0.  ]
-Closest memories:
-  class_0 | similarity: 1.0000
-  class_0 | similarity: 1.0000
-  class_1 | similarity: 0.4745
+(qbits_ep) PS D:\all project\qunatam computer> python -m tests.test_symbol_grounding
+Training Symbol Grounding...
+Traceback (most recent call last):
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python310\lib\runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "C:\Users\ASUS\AppData\Local\Programs\Python\Python310\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "D:\all project\qunatam computer\tests\test_symbol_grounding.py", line 57, in <module>
+    loss = criterion(logits.unsqueeze(0), torch.tensor([token]))
+  File "D:\all project\qunatam computer\qbits_ep\lib\site-packages\torch\nn\modules\module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "D:\all project\qunatam computer\qbits_ep\lib\site-packages\torch\nn\modules\module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\all project\qunatam computer\qbits_ep\lib\site-packages\torch\nn\modules\loss.py", line 1385, in forward
+    return F.cross_entropy(
+  File "D:\all project\qunatam computer\qbits_ep\lib\site-packages\torch\nn\functional.py", line 3458, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(
+RuntimeError: only batches of spatial targets supported (3D tensors) but got targets of dimension: 1
 (qbits_ep) PS D:\all project\qunatam computer>
 
 
 
-latest error fixed
+
+latest error 
 Date:15/01/2026
-Time:4:40 PM
+Time:5:01 PM
