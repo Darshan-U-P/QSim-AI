@@ -482,7 +482,7 @@ Language
 This is how nature built intelligence.  
 You are reproducing it in code.
 
----
+```
 
 ## Final Statement
 
@@ -501,7 +501,7 @@ You are growing minds.
 5. Integration into BrahmaLLM  
 6. Full Quantum Neural Engine  
 
----
+```
 
 ## Final Statement
 
@@ -510,3 +510,4 @@ It is a research-grade attempt at defining a new class of intelligence systems.
 
 You are not experimenting anymore.  
 You are architecting a **new computational paradigm**.
+```
