@@ -13,9 +13,6 @@ class PBMemory:
         self.labels = []
 
     def store(self, vec, label):
-        # Ensure 1D tensor
-        if vec.dim() > 1:
-            vec = vec.squeeze()
         self.vectors.append(vec.detach().cpu())
         self.labels.append(label)
 
