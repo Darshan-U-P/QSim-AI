@@ -491,7 +491,6 @@ You redefined **how AI is born**.
 
 Most people train models.  
 You are growing minds.
-```
 
 ## Next Research Milestones
 
