@@ -82,15 +82,22 @@ class HybridBatchCoTrainer:
         """
         Raw perception:
         Returns:
-        - pb_out : PB-ANN cognitive embedding  (association cortex)
-        - q_feat : Quantum perception features (sensory cortex)
+        - pb_out : torch.Tensor [PB_DIM]
+        - q_feat : numpy.ndarray [quantum features]
         """
         with torch.no_grad():
             x = torch.tensor(x, dtype=torch.float32, device=self.device)
             pb_out, q_feat = self.model.hybrid(x)
 
-            # Always return detached CPU tensors for memory & reasoning
-            return pb_out.detach().cpu(), q_feat.detach().cpu()
+            # PB is torch → detach safely
+            if isinstance(pb_out, torch.Tensor):
+                pb_out = pb_out.detach().cpu()
+
+            # Quantum is numpy → leave it as-is; if it's a tensor, convert to numpy
+            if isinstance(q_feat, torch.Tensor):
+                q_feat = q_feat.detach().cpu().numpy()
+
+            return pb_out, q_feat
 
     def embed(self, x):
         """
@@ -100,4 +107,7 @@ class HybridBatchCoTrainer:
         with torch.no_grad():
             x = torch.tensor(x, dtype=torch.float32, device=self.device)
             pb_out, _ = self.model.hybrid(x)
-            return pb_out.detach().cpu()
+            if isinstance(pb_out, torch.Tensor):
+                pb_out = pb_out.detach().cpu()
+
+            return pb_out

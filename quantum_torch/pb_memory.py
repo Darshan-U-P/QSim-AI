@@ -1,6 +1,6 @@
-import torch
 import numpy as np
-
+import torch
+import torch.nn.functional as F
 
 class PBMemory:
     """
@@ -13,12 +13,9 @@ class PBMemory:
         self.labels = []
 
     def store(self, vec, label):
-        """
-        vec must be a 1-D tensor: [PB_DIM]
-        """
-        if vec.dim() != 1:
-            vec = vec.squeeze(0)
-
+        # Ensure 1D tensor
+        if vec.dim() > 1:
+            vec = vec.squeeze()
         self.vectors.append(vec.detach().cpu())
         self.labels.append(label)
 
@@ -29,16 +26,22 @@ class PBMemory:
         if len(self.vectors) == 0:
             return [], []
 
-        if vec.dim() != 1:
-            vec = vec.squeeze(0)
+        # Ensure 1D tensor
+        if vec.dim() > 1:
+            vec = vec.squeeze()
 
         vec = vec.detach().cpu()
         sims = []
 
         for v in self.vectors:
-            # v and vec are now both [PB_DIM]
-            sim = torch.cosine_similarity(vec, v, dim=0)
-            sims.append(sim.item())
+            # Force both to shape [1, PB_DIM]
+            sim = F.cosine_similarity(
+                vec.unsqueeze(0),
+                v.unsqueeze(0),
+                dim=1
+            )
+            sims.append(sim.item())  # Now this is a scalar
 
         topk = np.argsort(sims)[-k:][::-1]
+
         return [self.labels[i] for i in topk], [sims[i] for i in topk]
